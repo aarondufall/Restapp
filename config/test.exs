@@ -13,8 +13,8 @@ config :logger, level: :warn
 config :restapp, Restapp.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "eddie99",
-  database: "test",
+  password: "password",
+  database: "database",
   size: 1,
   max_overflow: false
 
