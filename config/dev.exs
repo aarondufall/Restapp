@@ -31,5 +31,5 @@ config :logger, :console, format: "[$level] $message\n"
 config :restapp, Restapp.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
-  password: "password",
-  database: "database"
+  password: "eddie99",
+  database: "rest"
