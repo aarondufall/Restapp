@@ -25,6 +25,7 @@ defmodule Restapp.Mixfile do
     [{:phoenix, "~> 0.10.0"},
      {:phoenix_ecto, "~> 0.1"},
      {:postgrex, ">= 0.0.0"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:plug_jwt, "~> 0.5.0"}]
   end
 end

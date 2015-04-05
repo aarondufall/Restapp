@@ -32,4 +32,9 @@ config :restapp, Restapp.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "password",
-  database: "database"
+  database: "rest"
+
+config :joken,
+  secret_key: "test",
+  algorithm: :HS512,
+  json_module: JWT.Module

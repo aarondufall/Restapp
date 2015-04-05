@@ -14,7 +14,7 @@ config :restapp, Restapp.Repo,
   adapter: Ecto.Adapters.Postgres,
   username: "postgres",
   password: "password",
-  database: "database",
+  database: "rest",
   size: 1,
   max_overflow: false
 
