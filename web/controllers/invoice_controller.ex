@@ -75,7 +75,7 @@ defmodule Restapp.InvoiceController do
       end)
     end
     case status do
-      {:ok, message} ->
+      {:ok, _message} ->
         json conn |> put_status(200), %{"message" => "OK"}
       {:error, errors} ->
         json conn |> put_status(400), %{"message" => errors}

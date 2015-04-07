@@ -1,15 +1,23 @@
 defmodule Restapp.Router do
   use Phoenix.Router
 
-  pipeline :api do
+  pipeline :admin do
     plug :accepts, ["json"]
-    plug PlugJwt, secret: "test", claims: %{aud: "johndoe"}, json_module: JWT.Module
+    plug PlugToken, claims: %{aud: "admin"}
     plug Plug.Parsers, parsers: [ :json],
                        pass: ["application/json"],
                        json_decoder: Poison
   end
 
-  pipeline :login do
+  pipeline :user do
+    plug :accepts, ["json"]
+    plug PlugToken, claims: %{aud: "user"}
+    plug Plug.Parsers, parsers: [ :json],
+                       pass: ["application/json"],
+                       json_decoder: Poison
+  end
+
+  pipeline :guest do
     plug :accepts, ["json"]
     plug Plug.Parsers, parsers: [ :json],
                        pass: ["application/json"],
@@ -17,13 +25,19 @@ defmodule Restapp.Router do
   end
 
   scope "/api", Restapp do
-    pipe_through :api 
+    pipe_through :user 
     resources "/invoices", InvoiceController
   end
 
-  scope "/user", Restapp do
-    pipe_through :login
-    get "/login", LoginController, :login
+  scope "/admin", Restapp do
+    pipe_through :admin 
+    get "/", LoginController, :admin
+  end
+
+  scope "/login", Restapp do
+    pipe_through :guest
+    get "/user", LoginController, :login_user
+    get "/admin", LoginController, :login_admin
   end
 
   # Other scopes may use custom stacks.

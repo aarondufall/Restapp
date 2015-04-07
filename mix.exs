@@ -26,6 +26,6 @@ defmodule Restapp.Mixfile do
      {:phoenix_ecto, "~> 0.1"},
      {:postgrex, ">= 0.0.0"},
      {:cowboy, "~> 1.0"},
-     {:plug_jwt, "~> 0.5.0"}]
+     {:joken, "~> 0.11.0"}]
   end
 end

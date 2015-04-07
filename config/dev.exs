@@ -9,8 +9,7 @@ use Mix.Config
 config :restapp, Restapp.Endpoint,
   http: [port: 4000],
   debug_errors: true,
-  cache_static_lookup: false,
-  watchers: [{Path.expand("node_modules/brunch/bin/brunch"), ["watch"]}]
+  cache_static_lookup: false
 
 # Watch static and templates for browser reloading.
 # *Note*: Be careful with wildcards. Larger projects
@@ -36,5 +35,5 @@ config :restapp, Restapp.Repo,
 
 config :joken,
   secret_key: "test",
-  algorithm: :HS512,
+  algorithm: :HS256,
   json_module: JWT.Module
