@@ -20,7 +20,7 @@ defmodule Restapp.InvoiceController do
 
   def create(conn, params) do
     invoice = Invoice.changeset(params["data"], :create)
-    items   = Enum.map(params["includes"], &InvoiceItem.changeset(&1, :create))
+    items   = Enum.map(params["data"]["includes"], &InvoiceItem.changeset(&1, :create))
 
     if invoice.valid? && Enum.all?(items, & &1.valid?) do
       Repo.transaction fn ->
