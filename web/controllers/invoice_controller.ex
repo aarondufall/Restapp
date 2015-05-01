@@ -43,7 +43,7 @@ defmodule Restapp.InvoiceController do
     thisinvoice = Repo.get!(Invoice, params["id"]) |> Repo.preload([:invoice_items])   
     matchitems = thisinvoice.invoice_items
     invoice = Invoice.changeset(params["data"], :update, thisinvoice)
-    items   = Enum.map(params["includes"], &InvoiceItem.changeset(&1, :create))
+    items   = Enum.map(params["data"]["includes"], &InvoiceItem.changeset(&1, :create))
 
     if invoice.valid? && Enum.all?(items, & &1.valid?) do
       Repo.transaction fn ->
